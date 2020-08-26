@@ -48,8 +48,8 @@ public class Calendar {
 		this.notes.add(note);
 	}
 
-	public void createNote(Note note) {
-		this.notes.add(note);
+	public void createNote(LocalDate date, String description) {
+		this.notes.add(new Note(date, description));
 	}
 
 	public void viewNotes() {

@@ -13,9 +13,9 @@ public class Main {
 
 		Calendar calendar = new Calendar();
 
-		calendar.createNote(new Calendar.Note(date1, "My birthday."));
-		calendar.createNote(new Calendar.Note(date2, "New Year's Eve."));
-		calendar.createNote(new Calendar.Note(date3, "Fool's day."));
+		calendar.createNote(date1, "My birthday.");
+		calendar.createNote(date2, "New Year's Eve.");
+		calendar.createNote(date3, "Fool's day.");
 
 		calendar.viewNotes();
 	}
