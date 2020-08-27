@@ -2,6 +2,7 @@ package com.epam.task4.content;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class Dungeon {
 	private ArrayList<TreasureChest> treasureChests = new ArrayList<>();
@@ -18,8 +19,33 @@ public class Dungeon {
 
 	public void viewTreasures() {
 		for (TreasureChest treasureChest : this.treasureChests) {
-			System.out.println("Treasure #" + this.treasureChests.indexOf(treasureChest));
-			System.out.println(treasureChest);
+			System.out.println("Treasure #" + this.treasureChests.indexOf(treasureChest) +
+					"\nCoins number = " + treasureChest.getCoins().size() +
+					"\nRings number = " + treasureChest.getRings().size() +
+					"\nCups number = " + treasureChest.getCups().size() +
+					"\n--------------------------------------------\nTotal price = " + treasureChest.findTotalPrice() +
+					"$, total weight = " + treasureChest.findTotalWeight() + "kg\n");
+		}
+
+		while (true) {
+			System.out.println("More information?\n1)Yes.\n2)No.\n");
+			switch (new Scanner(System.in).nextInt()) {
+				case 1: {
+					System.out.println();
+					for (TreasureChest treasureChest : this.treasureChests) {
+						System.out.println("Treasure #" + this.treasureChests.indexOf(treasureChest));
+						System.out.println(treasureChest);
+					}
+					return;
+				}
+				case 2: {
+					System.out.println();
+					return;
+				}
+				default: {
+					System.out.println("\nSomething wrong...\n");
+				}
+			}
 		}
 	}
 
@@ -36,7 +62,7 @@ public class Dungeon {
 	public void findTreasureByPrice(double price) {
 		for (TreasureChest treasureChest : this.treasureChests) {
 			if (treasureChest.findTotalPrice() == price) {
-				System.out.println("\n\nTreasure #" + this.treasureChests.indexOf(treasureChest));
+				System.out.println("\nTreasure #" + this.treasureChests.indexOf(treasureChest));
 				System.out.println(treasureChest);
 				return;
 			}
