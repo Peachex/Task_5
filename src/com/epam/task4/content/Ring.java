@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Ring extends Treasure {
 	public enum Jewel {
-		DIAMOND(3, 0.5), RUBY(2, 0.3), EMERALD(1, 0.25);
+		DIAMOND(3, 3), RUBY(2, 2), EMERALD(1, 1);
 
 		private double priceRatio;
 		private double weightRatio;
@@ -61,6 +61,7 @@ public class Ring extends Treasure {
 		this.jewel = jewel;
 		this.diameter = diameter;
 		this.setPrice(this.getPrice() * this.jewel.priceRatio);
+		this.setWeight(this.getWeight() * this.jewel.weightRatio);
 	}
 
 	public Jewel getJewel() {
@@ -98,6 +99,7 @@ public class Ring extends Treasure {
 
 	@Override
 	public String toString() {
-		return "Ring material: " + this.getMaterial() + ", jewel: " + this.jewel + ", diameter = " + this.diameter + ", price = " + this.getPrice();
+		return "Ring material: " + this.getMaterial() + ", jewel: " + this.jewel + ", diameter = " + this.diameter +
+				", price = " + this.getPrice() + ", weight = " + this.getWeight();
 	}
 }

@@ -26,9 +26,11 @@ public class Dungeon {
 	public void findTheMostValuableTreasure() {
 		int treasureIndex = this.treasureChests.indexOf(this.treasureChests
 				.stream()
-				.max(Comparator.comparingDouble(TreasureChest::findTotalPrice))
-				.get());
-		System.out.println("Treasure #" + treasureIndex + "\n" + this.treasureChests.get(treasureIndex));
+				.max(Comparator.comparingDouble(TreasureChest::findTotalPrice)).get()
+		);
+		System.out.println("Treasure #" + treasureIndex);
+		System.out.println(this.treasureChests.get(treasureIndex));
+		//System.out.println(this.treasureChests.get(treasureIndex) + "\n" + "Treasure #" + treasureIndex);
 	}
 
 	public void findTreasureByPrice(double price) {

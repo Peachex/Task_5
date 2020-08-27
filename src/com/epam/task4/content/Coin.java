@@ -38,6 +38,7 @@ public class Coin extends Treasure {
 
 	@Override
 	public String toString() {
-		return "Coin material: " + this.getMaterial() + ", denomination: " + this.denomination + ", price = " + this.getPrice();
+		return "Coin material: " + this.getMaterial() + ", denomination: " + this.denomination + ", price = " +
+				this.getPrice() + ", weight = " + this.getWeight();
 	}
 }

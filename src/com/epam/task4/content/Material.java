@@ -3,7 +3,7 @@ package com.epam.task4.content;
 import java.util.Random;
 
 public enum Material {
-	GOLD(3, 0.5), SILVER(2, 0.3), BRONZE(1, 0.25);
+	GOLD(3, 3), SILVER(2, 2), BRONZE(1, 1);
 
 	private double priceRatio;
 	private double weightRatio;

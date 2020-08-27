@@ -37,6 +37,7 @@ public class Cup extends Treasure {
 
 	@Override
 	public String toString() {
-		return "Cup material: " + this.getMaterial() + ", volume = " + this.volume + ", price = " + this.getPrice();
+		return "Cup material: " + this.getMaterial() + ", volume = " + this.volume + ", price = " + this.getPrice() +
+				", weight = " + this.getWeight();
 	}
 }

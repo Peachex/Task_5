@@ -4,13 +4,11 @@ public abstract class Treasure {
 	private Material material;
 	private double price;
 	private double weight;
-	private static final double priceConst = 3;
-	private static final double weightConst = 10;
 
 	public Treasure(Material material) {
 		this.material = material;
-		this.price = this.material.getPriceRatio() * priceConst;
-		this.weight = this.material.getWeightRatio() * weightConst;
+		this.price = this.material.getPriceRatio();
+		this.weight = this.material.getWeightRatio();
 	}
 
 	public double getPrice() {
@@ -35,13 +33,5 @@ public abstract class Treasure {
 
 	public void setMaterial(Material material) {
 		this.material = material;
-	}
-
-	public static double getPriceConst() {
-		return priceConst;
-	}
-
-	public static double getWeightConst() {
-		return weightConst;
 	}
 }
