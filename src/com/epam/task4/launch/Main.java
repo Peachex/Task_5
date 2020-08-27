@@ -21,37 +21,22 @@ public class Main {
         Scanner in = new Scanner(System.in);
 
         Dungeon dungeon = new Dungeon();
-        dungeon.fillDungeon();
 
         while (true) {
             System.out.println("1)View treasures.\n2)View the most valuable treasure.\n3)Find treasure by price.\n4)Exit.\n");
             switch (in.nextInt()) {
                 case 1: {
+                    System.out.println();
                     dungeon.viewTreasures();
-                    System.out.println("More information?\n1)Yes.\n2)No.\n");
-                    switch (in.nextInt()) {
-                        case 1: {
-                            System.out.println();
-                            dungeon.viewTreasuresCoins();
-                            break;
-                        }
-                        case 2: {
-                            System.out.println();
-                            break;
-                        }
-                        default: {
-                            System.out.println("\nSomething wrong...\n");
-                        }
-                    }
                     break;
                 }
                 case 2: {
-                    System.out.print("\nThe most valuable treasure:");
+                    System.out.println("\nThe most valuable treasure:");
                     dungeon.findTheMostValuableTreasure();
                     break;
                 }
                 case 3: {
-                    System.out.println("\nInput price: \n");
+                    System.out.print("\nInput price: ");
                     dungeon.findTreasureByPrice(in.nextDouble());
                     break;
                 }

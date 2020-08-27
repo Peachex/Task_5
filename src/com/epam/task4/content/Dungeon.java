@@ -1,69 +1,44 @@
 package com.epam.task4.content;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Dungeon {
-    private static final int treasureSize = 100;
-    private Treasure[] treasures = new Treasure[treasureSize];
+	private ArrayList<TreasureChest> treasureChests = new ArrayList<>();
 
-    public Dungeon() {
+	public Dungeon() {
+		this.fillDungeonWithTreasures();
+	}
 
-    }
+	public void fillDungeonWithTreasures() {
+		for (int i = 0; i < 3; i++) {
+			this.treasureChests.add(new TreasureChest());
+		}
+	}
 
-    public Treasure[] getTreasures() {
-        return this.treasures;
-    }
+	public void viewTreasures() {
+		for (TreasureChest treasureChest : this.treasureChests) {
+			System.out.println("Treasure #" + this.treasureChests.indexOf(treasureChest));
+			System.out.println(treasureChest);
+		}
+	}
 
-    public void setTreasures(Treasure[] treasures) {
-        this.treasures = treasures;
-    }
+	public void findTheMostValuableTreasure() {
+		int treasureIndex = this.treasureChests.indexOf(this.treasureChests
+				.stream()
+				.max(Comparator.comparingDouble(TreasureChest::findTotalPrice))
+				.get());
+		System.out.println("Treasure #" + treasureIndex + "\n" + this.treasureChests.get(treasureIndex));
+	}
 
-    public static int getTreasureSize() {
-        return treasureSize;
-    }
-
-    public void fillDungeon() {
-        for (int i = 0; i < treasureSize; i++) {
-            this.treasures[i] = new Treasure(Coin.getRandomCoins());
-        }
-    }
-
-    public void viewTreasures() {
-        for (Treasure treasure : this.treasures) {
-            System.out.println(treasure);
-        }
-    }
-
-    public void viewTreasuresCoins() {
-        for (Treasure treasure : this.treasures) {
-            System.out.println("Treasure #" + treasure.getId());
-            for (Coin coin : treasure.getCoins()) {
-                System.out.println(coin);
-            }
-            System.out.println("--------------------------------------------\n");
-        }
-    }
-
-    public void findTheMostValuableTreasure() {
-        System.out.println(Arrays
-                .stream(this.treasures)
-                .max(Comparator.comparingDouble(Treasure::findTreasurePrice)).get());
-    }
-
-    public void findTreasureByPrice(double price) {
-        for (Treasure treasure : this.treasures) {
-            if (treasure.findTreasurePrice() == price) {
-                System.out.println(treasure);
-                return;
-            }
-        }
-        System.out.println("Couldn't find...\n");
-    }
-
-    public String toString() {
-        System.out.println("Dungeon: ");
-        this.viewTreasures();
-        return "";
-    }
+	public void findTreasureByPrice(double price) {
+		for (TreasureChest treasureChest : this.treasureChests) {
+			if (treasureChest.findTotalPrice() == price) {
+				System.out.println("\n\nTreasure #" + this.treasureChests.indexOf(treasureChest));
+				System.out.println(treasureChest);
+				return;
+			}
+		}
+		System.out.println("\nSomething wrong...\n");
+	}
 }
